@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg3907" viewBox="0 0 35.999999 35.999999" version="1.1">
+  <rect id="rect3915" rx="4.7556" height="26.03" width="34.861" stroke="#604f2a" y="9.4018" x=".58346" stroke-width="1.1389" fill="#f3cd7f"/>
+  <path id="rect4615" fill="#604f2a" d="m1.0759 11.994c-0.00472 0.0603-0.00572 0.11958-0.00572 0.18086v1.4986c2.3986 1.9162 31.351 1.9162 33.939 0v-1.4986c0-0.0613-0.0011-0.12051-0.0057-0.18086-2.5818 1.8043-31.535 1.8043-33.927 0z"/>
+  <path id="path4342" style="block-progression:tb;color:#000000;text-transform:none;text-indent:0" d="m18.26 0.37218c-0.25919-0.00049-0.52052 0.0103-0.77984 0.0354-2.0745 0.20176-3.9352 1.4147-5.1354 2.8074s-1.75 3.5198-1.121 5.7696c0.06459 0.23543 0.52499 0.4182 0.96605 0.38351 0.44106-0.0346 0.7831-0.28057 0.71769-0.51594-0.58694-2.0994-0.05419-3.8137 0.98366-5.018 1.0379-1.2043 2.5724-1.8744 3.8948-2.003 1.3224-0.12862 2.5925 0.17504 3.6112 1.2793s1.5979 3.014 1.0235 5.8339c-0.04823 0.23637 0.31052 0.47488 0.75335 0.50087 0.44283 0.026 0.8901-0.16523 0.93925-0.40156 0.59608-2.9264 0.05457-5.2272-1.1875-6.5736-1.0868-1.1781-2.8514-2.0946-4.6657-2.0979z" stroke="#604f2a" stroke-width=".74249" fill="#f3cd7f"/>
+  <path id="path4221" style="block-progression:tb;color:#000000;text-transform:none;text-indent:0" d="m18.433 2.5128c-0.33487-0.00063-0.67251 0.0132-1.0075 0.0458-2.6803 0.26068-5.0843 1.8278-6.6349 3.6271-1.5506 1.7994-2.261 4.5476-1.4483 7.4543 0.083453 0.30416 0.67828 0.5403 1.2481 0.49548 0.56985-0.0448 1.0118-0.36249 0.92726-0.66658-0.75833-2.7124-0.07001-4.9273 1.2709-6.4833s3.3235-2.4217 5.032-2.5878c1.7085-0.16617 3.3495 0.22615 4.6656 1.6529 1.3162 1.4268 2.0645 3.894 1.3224 7.5374-0.06231 0.30538 0.4012 0.61354 0.97333 0.64712 0.57214 0.0335 1.15-0.21349 1.2135-0.51881 0.77014-3.7809 0.0705-6.7535-1.5342-8.4931-1.4041-1.5221-3.684-2.7062-6.0281-2.7105z" stroke="#604f2a" stroke-width=".95929" fill="#f3cd7f"/>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Simple Shopping Bag Logo/Icon</dc:title>
+        <dc:date>2012-07-01T23:21:51</dc:date>
+        <dc:description>bag, cartoon, clip art, clipart, icon, logo, shopping, simple, </dc:description>
+        <dc:source>http://openclipart.org/detail/171001/simple-shopping-bag-logoicon-by-qubodup-171001</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>qubodup</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>bag</rdf:li>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>logo</rdf:li>
+            <rdf:li>shopping</rdf:li>
+            <rdf:li>simple</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
