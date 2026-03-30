@@ -7,6 +7,7 @@ import cookie from "cookie";
 const signup = async (req, res) => {
   try {
     const { name, password } = req?.body;
+    console.log(req?.body);
 
     if (!name || !password) {
       return res.status(400).json({ success: false, message: "Name/password is not defined" });
@@ -15,6 +16,8 @@ const signup = async (req, res) => {
     const existingUser = await User.findOne({ name });
 
     if (existingUser) return res.status(400).json({ success: false, message: "User already exists." });
+
+    if (password?.length < 6) return res.status(400).json({ success: false, message: "Password must me at least 6 characters." })
 
     const hashPassword = await bcrypt.hash(password, 10);
 
@@ -25,7 +28,7 @@ const signup = async (req, res) => {
 
     const token = jwt.sign({ id: newUser._id }, config.JWT_SECRET, { expiresIn: "7d" });
     res.setHeader("Set-Cookie", cookie.serialize("token", token, { httpOnly: true, secure: config.NODE_ENV === "production", sameSite: "strict", maxAge: 7 * 24 * 60 * 60, path: "/" }));
-    return res.status(201).json({ success: true, message: "User created successfully", data: { ...newUser, password: "" } });
+    return res.status(201).json({ success: true, message: "User created successfully", data: { ...newUser._doc, password: "" } });
   } catch (error) {
     return res.status(500).json({ success: false, message: "Server error" });
   }
@@ -49,10 +52,10 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, config.JWT_SECRET, { expiresIn: "7d" });
     res.setHeader("Set-Cookie", cookie.serialize("token", token, { httpOnly: true, secure: config.NODE_ENV === "production", sameSite: "strict", maxAge: 7 * 24 * 60 * 60, path: "/" }));
-    return res.status(201).json({ success: true, message: "User created successfully", data: { ...user, password: "" } });
+    return res.status(201).json({ success: true, message: "User login successfully", data: { ...user._doc, password: "" } });
   } catch (error) {
     return res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
-export { signup, login, profile };
+export { signup, login };
