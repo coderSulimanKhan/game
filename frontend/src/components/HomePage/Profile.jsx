@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getRank } from "../../store/user.store.js";
+import { getRank, logout } from "../../store/user.store.js";
 import { LogOut, X } from "lucide-react";
 
 const Profile = ({ closeProfile }) => {
@@ -7,6 +7,9 @@ const Profile = ({ closeProfile }) => {
   const dispatch = useDispatch();
   dispatch(getRank(user?._id));
   const { rank } = useSelector(state => state.user);
+  const logoutUser = () => {
+    dispatch(logout());
+  }
   return (
     <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center">
       <div className="min-w-90 max-w-90 m-2 md:m-0 gb borderShadow rounded-lg flex flex-col items-center gap-10">
@@ -57,7 +60,7 @@ const Profile = ({ closeProfile }) => {
             }
           </div>
           <div className="flex items-center justify-between">
-            <button className="flex items-center justify-center p-2 rbg rounded-lg my-2 borderShadow hoverEffect font-bold text-orange-400 ts">
+            <button onClick={logoutUser} className="flex items-center justify-center p-2 rbg rounded-lg my-2 borderShadow hoverEffect font-bold text-orange-400 ts">
               <LogOut />
             </button>
             <p className="text-lg md:text-lg font-bold text-orange-300 ts">

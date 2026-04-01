@@ -49,6 +49,16 @@ const getRank = createAsyncThunk("users/rank", async (id, { rejectWithValue }) =
   }
 });
 
+const logout = createAsyncThunk("users/logout", async (_, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/logout");
+    const response = await res.json();
+    if (res.ok) return response;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -88,8 +98,21 @@ const userSlice = createSlice({
       .addCase(getRank.fulfilled, (state, action) => {
         state.rank = action.payload;
       })
+      // logout
+      .addCase(logout.pending, state => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        toast.success(action.payload.message);
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action?.payload?.message);
+      })
   }
 });
 
-export { signup, login, getRank };
+export { signup, login, getRank, logout };
 export default userSlice.reducer;

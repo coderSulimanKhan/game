@@ -58,6 +58,17 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req?.user?.id });
+    if (!user) return res.status(401).json({ success: false, message: "No user to logout" });
+    res.setHeader("Set-Cookie", cookie.serialize("token", "", { maxAge: 0, path: "/" }));
+    res.status(200).json({ success: true, message: "Logout successfull" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
 const getRank = async (req, res) => {
   const { id } = req?.params;
   try {
@@ -71,4 +82,4 @@ const getRank = async (req, res) => {
   }
 };
 
-export { signup, login, getRank };
+export { signup, login, getRank, logout };
