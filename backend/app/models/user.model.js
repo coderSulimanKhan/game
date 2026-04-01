@@ -5,8 +5,8 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   power: { type: Number, default: 0 },
   resources: {
-    coins: { type: String, min: 0, default: 0 },
-    diamonds: { type: String, min: 0, default: 0 },
+    coins: { type: String, min: 0, default: 1000 },
+    diamonds: { type: String, min: 0, default: 100 },
   },
   buildings: {
     castle: {

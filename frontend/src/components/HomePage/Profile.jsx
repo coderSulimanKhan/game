@@ -31,7 +31,7 @@ const Profile = ({ closeProfile }) => {
                         <img src="/pages/HomePage/ranks/profile/4-10.svg" alt={rank} className="w-20" />
                         <p className="text-xl font-bold absolute left-8.5 top-5 ts text-white">{rank}</p>
                       </div>
-                      : <p className="text-3xl">{rank}</p>
+                      : <p className="text-3xl font-bold ts text-orange-200 px-2">{rank}</p>
             }
           </div>
           <div className="">
