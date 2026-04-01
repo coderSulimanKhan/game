@@ -1,14 +1,15 @@
 import { Plus } from "lucide-react"
+import { useSelector } from "react-redux";
 
-const Navbar = () => {
-  const { resources } = JSON.parse(localStorage.getItem("user"));
+const Navbar = ({ openProfile }) => {
+  const { resources } = useSelector(state => state.user);
   return (
     // Main Navbar
     <div className="h-[10vh] mt-1 lg:mt-4 flex items-center justify-between mx-2">
       {/* first section */}
       <div className="flex w-fit gb p-2 rounded-lg gap-1 items-start justify-center borderShadow">
         {/* first section */}
-        <button className="w-14 lg:w-16 borderShadow rounded-sm hoverEffect">
+        <button onClick={openProfile} className="w-14 lg:w-16 borderShadow rounded-sm hoverEffect">
           <img className="w-full myShadow" src="/pages/HomePage/profile.svg" alt="Profile" />
         </button>
         {/* - first section */}

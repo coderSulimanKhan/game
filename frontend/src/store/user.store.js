@@ -12,10 +12,9 @@ const signup = createAsyncThunk("users/signup", async (data, { rejectWithValue }
     });
     const response = await res.json();
     if (!response?.success) {
-      return toast.error(response?.message);
+      return rejectWithValue({ message: response?.message || "Signup failed" });
     };
-    toast.success(response?.message);
-    return response.data;
+    return response;
   } catch (error) {
     return rejectWithValue({ message: error?.message });
   }
@@ -32,12 +31,21 @@ const login = createAsyncThunk("users/login", async (data, { rejectWithValue }) 
     });
     const response = await res.json();
     if (!response?.success) {
-      return toast.error(response?.message);
+      return rejectWithValue({ message: response?.message || "Login failed" });
     };
-    toast.success(response?.message);
-    return response.data;
+    return response;
   } catch (error) {
     return rejectWithValue({ message: error?.message });
+  }
+});
+
+const getRank = createAsyncThunk("users/rank", async (id, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/rank/" + id);
+    const response = await res.json();
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error);
   }
 });
 
@@ -45,36 +53,43 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    rank: null,
     loading: false,
   },
   extraReducers: (builder) => {
     builder
+      // signup
       .addCase(signup.pending, state => {
         state.loading = true;
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action?.payload));
+        state.user = action?.payload?.data;
+        toast.success(action?.payload?.message);
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
         toast.error(action?.payload?.message);
       })
+      // login
       .addCase(login.pending, state => {
         state.loading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action?.payload));
+        state.user = action?.payload?.data;
+        toast.success(action.payload.message);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
         toast.error(action?.payload?.message);
       })
+      // rank
+      .addCase(getRank.fulfilled, (state, action) => {
+        state.rank = action.payload;
+      })
   }
 });
 
-export { signup, login };
+export { signup, login, getRank };
 export default userSlice.reducer;

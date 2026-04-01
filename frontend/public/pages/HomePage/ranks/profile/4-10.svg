@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <!-- Circular Frame -->
+  <circle cx="500" cy="500" r="400" fill="none" stroke="url(#goldGradient)" stroke-width="20">
+    <!-- Pulsing gold glow -->
+    <animate attributeName="stroke-width" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Shield Base -->
+  <path d="M500 150 L650 400 L500 850 L350 400 Z" fill="url(#chromeGradient)" stroke="#222" stroke-width="10">
+    <!-- Slight scale animation -->
+    <animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="3s" repeatCount="indefinite" additive="sum" origin="500 500"/>
+  </path>
+
+  <!-- Laurel Accents -->
+  <g stroke="gold" stroke-width="8" fill="none">
+    <path d="M300 600 C250 500, 250 300, 350 200"/>
+    <path d="M700 600 C750 500, 750 300, 650 200"/>
+  </g>
+
+  <!-- Wings with slight flapping animation -->
+  <g stroke="url(#cyanBlueGradient)" stroke-width="6" fill="none">
+    <!-- Left wing -->
+    <path id="leftWing1" d="M350 400 C200 350, 150 500, 300 550">
+      <animateTransform attributeName="transform" type="rotate" values="0 350 400;3 350 400;0 350 400" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path id="leftWing2" d="M350 400 C200 400, 150 550, 300 600">
+      <animateTransform attributeName="transform" type="rotate" values="0 350 400;-3 350 400;0 350 400" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Right wing -->
+    <path id="rightWing1" d="M650 400 C800 350, 850 500, 700 550">
+      <animateTransform attributeName="transform" type="rotate" values="0 650 400;-3 650 400;0 650 400" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path id="rightWing2" d="M650 400 C800 400, 850 550, 700 600">
+      <animateTransform attributeName="transform" type="rotate" values="0 650 400;3 650 400;0 650 400" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </linearGradient>
+    <linearGradient id="chromeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6e6e6"/>
+      <stop offset="100%" stop-color="#555555"/>
+    </linearGradient>
+    <linearGradient id="cyanBlueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffff"/>
+      <stop offset="100%" stop-color="#0077ff"/>
+    </linearGradient>
+  </defs>
+</svg>

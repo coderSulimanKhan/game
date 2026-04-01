@@ -3,9 +3,10 @@ import { Routes, Route, Navigate } from "react-router"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
 import { ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const user = localStorage.getItem("user");
+  const { user } = useSelector(state => state.user);
   return (
     <>
       <Routes>

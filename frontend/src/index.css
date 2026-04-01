@@ -37,6 +37,10 @@
   @apply bg-linear-65 from-green-900 to-green-400;
 }
 
+.rbg {
+  @apply bg-linear-65 from-red-800 to-red-600;
+}
+
 .ts {
   text-shadow: 0px 0px 5px #000;
 }
@@ -47,4 +51,8 @@
 
 .hoverEffect2 {
   @apply transition-all hover:scale-105 active:scale-100;
+}
+
+.selectable::selection {
+  background: black;
 }

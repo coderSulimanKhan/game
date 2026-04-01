@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="800" height="800" overflow="visible">
+  <defs>
+    <!-- Bronze gradient -->
+    <linearGradient id="bronze" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#e0b084"/>
+      <stop offset="0.5" stop-color="#b87333"/>
+      <stop offset="1" stop-color="#6b3e1f"/>
+    </linearGradient>
+
+    <!-- Very soft blue -->
+    <linearGradient id="neonBlue" x1="0" x2="1">
+      <stop offset="0" stop-color="#dff7ff"/>
+      <stop offset="1" stop-color="#7abfff"/>
+    </linearGradient>
+
+    <radialGradient id="glow">
+      <stop offset="0%" stop-color="#7abfff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    svg { background: transparent; display: block; }
+
+    .center {
+      transform-origin: center;
+      transform-box: view-box;
+    }
+
+    /* Much slower rotation */
+    .ring {
+      animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Very subtle pulse */
+    .pulse {
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Very soft glow */
+    .glow {
+      animation: flicker 3s infinite ease-in-out;
+    }
+
+    @keyframes flicker {
+      0%,100% { opacity: 0.6; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Slower orbit */
+    .orbit {
+      animation: spin 10s linear infinite;
+      transform-origin: center;
+      transform-box: view-box;
+    }
+
+    .orbit.fast {
+      animation-duration: 8s;
+      animation-direction: reverse;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spark {
+      animation: blink 2.5s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity:0.7; transform: scale(1); }
+      50% { opacity:0.3; transform: scale(1.2); }
+    }
+  </style>
+
+  <!-- OUTER RING -->
+  <g class="ring center">
+    <circle cx="100" cy="100" r="66" stroke="url(#neonBlue)" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- BADGE -->
+  <g>
+    <path d="M100 50 L130 75 L120 120 L100 140 L80 120 L70 75 Z"
+          fill="url(#bronze)" stroke="#3a2a1a" stroke-width="1.2"/>
+    
+    <circle cx="100" cy="100" r="34" fill="url(#glow)"/>
+  </g>
+
+  <!-- GLOW EDGE -->
+  <g class="glow">
+    <path d="M100 50 L130 75 L120 120 L100 140 L80 120 L70 75 Z"
+          fill="none" stroke="url(#neonBlue)" stroke-width="1"/>
+  </g>
+
+  <!-- ORBIT PARTICLES -->
+  <g class="orbit center">
+    <circle cx="100" cy="30" r="1.5" fill="#7abfff" class="spark"/>
+    <circle cx="170" cy="100" r="1.5" fill="#b87333" class="spark"/>
+    <circle cx="100" cy="170" r="1.5" fill="#7abfff" class="spark"/>
+  </g>
+
+  <g class="orbit fast center">
+    <circle cx="50" cy="50" r="1.2" fill="#b87333" class="spark"/>
+    <circle cx="150" cy="50" r="1.2" fill="#7abfff" class="spark"/>
+  </g>
+
+  <!-- NUMBER -->
+  <g class="pulse center">
+    <text x="100" y="115"
+          text-anchor="middle"
+          font-size="65"
+          font-family="Arial Black"
+          fill="url(#bronze)"
+          stroke="#3a2a1a"
+          stroke-width="1.2">
+      3
+    </text>
+
+    <!-- glow -->
+    <text x="100" y="115"
+          text-anchor="middle"
+          font-size="65"
+          font-family="Arial Black"
+          fill="url(#bronze)"
+          opacity="0.15"
+          filter="url(#softGlow)">
+      3
+    </text>
+  </g>
+</svg>
