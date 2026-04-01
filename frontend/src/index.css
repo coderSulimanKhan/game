@@ -56,3 +56,14 @@
 .selectable::selection {
   background: black;
 }
+
+.meterStyle::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, goldenrod, green);
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.meterStyle::-webkit-meter-bar {
+  border-radius: 4px;
+}

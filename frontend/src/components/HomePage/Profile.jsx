@@ -36,10 +36,10 @@ const Profile = ({ closeProfile }) => {
           </div>
           <div className="">
             {
-              user?.vipPoints / 1000 >= 1 &&
+              user?.vipPoints / 2000 >= 1 &&
               <div className="absolute top-23 right-16 rounded-full myShadow">
                 <img src="/pages/HomePage/vip-level.svg" className="w-14" alt="VIP" />
-                <p className="absolute text-3xl font-bold text-orange-100 top-2 left-5">{user?.vipPoints / 1000}</p>
+                <p className="absolute text-3xl font-bold text-orange-100 top-2 left-5">{Math.floor(user?.vipPoints / 2000)}</p>
               </div>
             }
           </div>
