@@ -1,5 +1,3 @@
-import Buildings from "./Buildings"
-
 const Footer = () => {
   return (
     <>
@@ -45,9 +43,6 @@ const Footer = () => {
             <p className="text-lg font-bold text-orange-100 ts">Bag</p>
           </div>
         </div>
-
-        <Buildings device={"desktop"} />
-
         <div className="relative hoverEffect rounded-lg px-4 py-1 flex flex-col items-center justify-center gap-1">
           <img src="/pages/HomePage/world.svg" alt="Wprld" className="absolute bottom-6 myShadow" />
           <p className="text-lg font-bold text-orange-100 ts pt-12">World</p>

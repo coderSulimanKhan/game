@@ -67,3 +67,14 @@
 .meterStyle::-webkit-meter-bar {
   border-radius: 4px;
 }
+
+.styledScrollbar::-webkit-scrollbar {
+  width:8px;
+  background: transparent;
+};
+
+.styledScrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, red,goldenrod, goldenrod);
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+  border-radius: 5px;
+}
