@@ -72,6 +72,32 @@ const upgradeCastle = createAsyncThunk("users/castle/upgrade", async (_, { rejec
   }
 });
 
+const upgradeTrain = createAsyncThunk("users/train/upgrade", async (_, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/train/upgrade");
+    const response = await res.json();
+    if (!res.ok) {
+      return rejectWithValue(response);
+    };
+    return response;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
+const upgradeTech = createAsyncThunk("users/tech/upgrade", async (_, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/tech/upgrade");
+    const response = await res.json();
+    if (!res.ok) {
+      return rejectWithValue(response);
+    };
+    return response;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -131,14 +157,37 @@ const userSlice = createSlice({
       .addCase(upgradeCastle.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action?.payload?.data;
-        // toast.success(action?.payload?.message);
       })
       .addCase(upgradeCastle.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action?.payload?.message);
+      })
+      // upgrade train
+      .addCase(upgradeTrain.pending, state => {
+        state.loading = true;
+      })
+      .addCase(upgradeTrain.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action?.payload?.data;
+      })
+      .addCase(upgradeTrain.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action?.payload?.message);
+      })
+      // upgrade tech
+      .addCase(upgradeTech.pending, state => {
+        state.loading = true;
+      })
+      .addCase(upgradeTech.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action?.payload?.data;
+      })
+      .addCase(upgradeTech.rejected, (state, action) => {
         state.loading = false;
         toast.error(action?.payload?.message);
       })
   }
 });
 
-export { signup, login, getRank, logout, upgradeCastle };
+export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech };
 export default userSlice.reducer;

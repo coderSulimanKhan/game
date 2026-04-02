@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const Buildings = ({ openCastleInfo, openCasteleUpdrade }) => {
+const Buildings = ({ openCastleInfo, openCasteleUpdrade, openTrainInfo, openTrainUpgrade, openTechInfo, openTechUpgrade }) => {
   const { user } = useSelector(state => state.user);
   const [isOpenCastleMoreOptions, setIsOpenCastleMoreOptions] = useState(false);
   const [isOpenTrainMoreOptions, setIsOpenTrainMoreOptions] = useState(false);
@@ -53,12 +53,12 @@ const Buildings = ({ openCastleInfo, openCasteleUpdrade }) => {
 
       <div onClick={toggleTrainMoreOptions} className="flex flex-col items-center gap-0.5 relative">
         <img src="/buildings/training.svg" alt="Training" className="w-20 mt-65 myShadow" />
-        <p className="font-bold w-23 text-orange-100 text-xl ts gb borderShadow rounded-full text-center">Train <span className="gbg px-2 rounded-full borderShadow text-lg">3</span></p>
+        <p className="font-bold w-23 text-orange-100 text-xl ts gb borderShadow rounded-full text-center">Train <span className="gbg px-2 rounded-full borderShadow text-lg">{user?.buildings?.train?.level}</span></p>
         {
           isOpenTrainMoreOptions && (
             <div className="absolute top-75 font-bold text-orange-100 ts text-md flex flex-col gap-2 gbg borderShadow rounded-lg p-2">
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
+              <div onClick={openTrainInfo} className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
+              <div onClick={openTrainUpgrade} className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
               <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Train</div>
             </div>
           )
@@ -79,12 +79,12 @@ const Buildings = ({ openCastleInfo, openCasteleUpdrade }) => {
       </div>
       <div onClick={toggleTechMoreOptions} className="flex flex-col items-center gap-0.5">
         <img src="/buildings/tech.svg" alt="Tech" className="w-18 mt-55 myShadow2" />
-        <p className="font-bold w-23 text-orange-100 text-xl ts gb borderShadow rounded-full text-center">Tech <span className="gbg px-2 rounded-full borderShadow text-lg">2</span></p>
+        <p className="font-bold w-23 text-orange-100 text-xl ts gb borderShadow rounded-full text-center">Tech <span className="gbg px-2 rounded-full borderShadow text-lg">{user?.buildings?.tech?.level}</span></p>
         {
           isOpenTechMoreOptions && (
             <div className="absolute top-75 font-bold text-orange-100 ts text-md flex flex-col gap-2 gbg borderShadow rounded-lg p-2">
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
+              <div onClick={openTechInfo} className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
+              <div onClick={openTechUpgrade} className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
               <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Tech</div>
             </div>
           )

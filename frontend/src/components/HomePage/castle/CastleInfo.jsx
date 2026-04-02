@@ -46,21 +46,21 @@ const CastleInfo = ({ closeCastleInfo }) => {
       [38, 3400, "d", 800000],
       [39, 3600, "d", 900000],
       [40, 3800, "d", 1000000],
-      [41, 200000, "c", 1100000],
-      [42, 250000, "c", 1200000],
-      [43, 300000, "c", 1300000],
-      [44, 350000, "c", 1400000],
-      [45, 400000, "c", 1500000],
-      [46, 450000, "c", 1600000],
-      [47, 500000, "c", 1700000],
-      [48, 550000, "c", 1800000],
-      [49, 600000, "c", 1900000],
-      [50, 650000, "c", 2000000],
+      [41, 1200000, "c", 1100000],
+      [42, 2500000, "c", 1200000],
+      [43, 3000000, "c", 1300000],
+      [44, 3500000, "c", 1400000],
+      [45, 4000000, "c", 1500000],
+      [46, 4500000, "c", 1600000],
+      [47, 5000000, "c", 1700000],
+      [48, 5500000, "c", 1800000],
+      [49, 6000000, "c", 1900000],
+      [50, 6500000, "c", 2000000],
     ];
   }, []);
   return (
     <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center">
-      <div className="min-w-90 max-w-90 m-2 h-[60vh] overflow-y-scroll md:m-0 gb borderShadow rounded-lg flex flex-col items-center gap-1 relative styledScrollbar">
+      <div className="min-w-90 max-w-90 m-2 h-[60vh] overflow-y-scroll overflow-x-hidden md:m-0 gb borderShadow rounded-lg flex flex-col items-center gap-1 relative styledScrollbar">
         <div className="flex">
           <p className="text-2xl text-orange-200 ts font-bold">Castle Info</p>
           <X onClick={closeCastleInfo} className="myShadow hoverEffect absolute right-1 top-1" size={30} />

@@ -12,7 +12,7 @@ const userSchema = new Schema({
     castle: {
       level: { type: Number, min: 0, default: 0 },
     },
-    training: {
+    train: {
       level: { type: Number, min: 0, default: 0 }
     },
     tech: {
