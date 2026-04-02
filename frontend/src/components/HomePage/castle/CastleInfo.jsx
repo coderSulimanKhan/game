@@ -1,7 +1,9 @@
 import { X } from "lucide-react"
 import { useMemo } from "react"
+import { useSelector } from "react-redux";
 
 const CastleInfo = ({ closeCastleInfo }) => {
+  const { user } = useSelector(state => state.user);
   const castleInfo = useMemo(() => {
     return [
       [1, 100, "c", 50],
@@ -72,9 +74,9 @@ const CastleInfo = ({ closeCastleInfo }) => {
             </thead>
             <tbody>
               {castleInfo.map(([level, , , power]) => (
-                <tr key={level}>
+                <tr key={level} className={`${user?.buildings?.castle?.level === level ? "bg-black" : ""} border-b border-orange-300/50`}>
                   <td className="text-orange-500 myShadow font-bold">{level}</td>
-                  <td className="text-orange-400 ts font-bold">{power}</td>
+                  <td className="text-orange-400 ts font-bold">+{power}</td>
                   <td className="text-xs text-orange-300 ts font-bold">D+{level}%/H+{level}%/De+{level}%/TC+{level * 20}/R+{level * 10}m</td>
                 </tr>
               ))}

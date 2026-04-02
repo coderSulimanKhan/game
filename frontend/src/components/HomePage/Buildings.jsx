@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Buildings = ({ openCastleInfo }) => {
+const Buildings = ({ openCastleInfo, openCasteleUpdrade }) => {
+  const { user } = useSelector(state => state.user);
   const [isOpenCastleMoreOptions, setIsOpenCastleMoreOptions] = useState(false);
   const [isOpenTrainMoreOptions, setIsOpenTrainMoreOptions] = useState(false);
   const [isOpenTechMoreOptions, setIsOpenTechMoreOptions] = useState(false);
@@ -64,12 +66,12 @@ const Buildings = ({ openCastleInfo }) => {
       </div>
       <div onClick={toggleCastleMoreOptions} className="flex flex-col items-center gap-1 top-10 relative">
         <img src="/buildings/castle.svg" alt="Castle" className="w-50 myShadow" />
-        <p className="font-bold w-fit px-1 text-orange-100 text-2xl ts gb borderShadow rounded-full text-center">Castle <span className="gbg px-2 rounded-full borderShadow">1</span></p>
+        <p className="font-bold w-fit px-1 text-orange-100 text-2xl ts gb borderShadow rounded-full text-center">Castle <span className="gbg px-2 rounded-full borderShadow">{user?.buildings?.castle?.level}</span></p>
         {
           isOpenCastleMoreOptions && (
             <div className="absolute top-45 font-bold text-orange-100 ts text-md flex flex-col gap-2 gbg borderShadow rounded-lg p-2">
               <div onClick={openCastleInfo} className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
+              <div onClick={openCasteleUpdrade} className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
               <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">PowerUps</div>
             </div>
           )

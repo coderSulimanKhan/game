@@ -10,17 +10,17 @@ const userSchema = new Schema({
   },
   buildings: {
     castle: {
-      level: { type: Number, min: 1, default: 1 },
+      level: { type: Number, min: 0, default: 0 },
     },
     training: {
-      level: { type: Number, min: 1, default: 1 }
+      level: { type: Number, min: 0, default: 0 }
     },
     tech: {
-      level: { type: Number, min: 1, default: 1 }
+      level: { type: Number, min: 0, default: 0 }
     }
   },
   isVip: { type: Boolean, default: false },
-  vipPoints: { type: Number, default: 0 },
+  vipPoints: { type: Number, min: 0, max: 18000, default: 0 },
   image: { type: String, default: "/pages/HomePage/profile.svg" },
   achievements: [{ name: { type: String }, image: String }]
 }, { timestamps: true });

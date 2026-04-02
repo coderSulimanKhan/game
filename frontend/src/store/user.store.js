@@ -59,6 +59,19 @@ const logout = createAsyncThunk("users/logout", async (_, { rejectWithValue }) =
   }
 });
 
+const upgradeCastle = createAsyncThunk("users/castle/upgrade", async (_, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/castle/upgrade");
+    const response = await res.json();
+    if (!res.ok) {
+      return rejectWithValue(response);
+    };
+    return response;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -105,14 +118,27 @@ const userSlice = createSlice({
       .addCase(logout.fulfilled, (state, action) => {
         state.loading = false;
         state.user = null;
-        toast.success(action.payload.message);
+        toast.success(action?.payload?.message);
       })
       .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action?.payload?.message);
+      })
+      // upgrade castle
+      .addCase(upgradeCastle.pending, state => {
+        state.loading = true;
+      })
+      .addCase(upgradeCastle.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action?.payload?.data;
+        // toast.success(action?.payload?.message);
+      })
+      .addCase(upgradeCastle.rejected, (state, action) => {
         state.loading = false;
         toast.error(action?.payload?.message);
       })
   }
 });
 
-export { signup, login, getRank, logout };
+export { signup, login, getRank, logout, upgradeCastle };
 export default userSlice.reducer;
