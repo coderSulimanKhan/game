@@ -77,7 +77,7 @@ const TrainInfo = ({ closeTrainInfo }) => {
                 <tr key={level} className={`${user?.buildings?.train?.level === level ? "bg-black" : ""} border-b border-orange-300/50`}>
                   <td className="text-orange-500 myShadow font-bold">{level}</td>
                   <td className="text-orange-400 ts font-bold">+{power}</td>
-                  <td className="text-xs text-orange-300 ts font-bold">TC+{level * 100}</td>
+                  <td className="text-xs text-orange-300 ts font-bold">TC+{level * 100} / T Level {level}</td>
                 </tr>
               ))}
             </tbody>
