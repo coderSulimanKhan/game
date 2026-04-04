@@ -156,6 +156,7 @@ const upgradeCastle = async (req, res) => {
       user.resources.diamonds -= requiredResources[1];
     }
 
+    user.troops.troopsCapacity += (prevLevel + 1) * 20;
     user.buildings.castle.level += 1;
     user.power += requiredResources[3];
     const upgradedUser = await user.save();
@@ -241,6 +242,7 @@ const upgradeTrain = async (req, res) => {
       user.resources.diamonds -= requiredResources[1];
     }
 
+    user.troops.troopsCapacity += (prevLevel + 1) * 100;
     user.buildings.train.level += 1;
     user.power += requiredResources[3];
     const upgradedUser = await user.save();
@@ -336,4 +338,47 @@ const upgradeTech = async (req, res) => {
   }
 };
 
-export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech };
+const buyTroops = async (req, res) => {
+
+  const { level, quantity } = req?.body;
+
+  const troopsLevelInfo = [
+    { level: 1, damage: 100, health: 50, defense: 25, power: 100, price: 100 },
+    { level: 2, damage: 200, health: 100, defense: 50, power: 500, price: 500 },
+    { level: 3, damage: 300, health: 150, defense: 75, power: 1000, price: 1000 },
+    { level: 4, damage: 500, health: 250, defense: 125, power: 5000, price: 5000 },
+    { level: 5, damage: 1000, health: 500, defense: 250, power: 10000, price: 10000 },
+  ];
+
+  const totalTroopsPrice = troopsLevelInfo[level - 1].price * quantity;
+
+  try {
+    const user = await User.findOne({ _id: req?.user?.id });
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    let totalTroops = 0;
+    user?.troops?.troops?.forEach(t => {
+      totalTroops += t.quantity;
+    });
+    const avaliableCapacity = user?.troops?.troopsCapacity - totalTroops;
+    // check for troops capacity
+    if (avaliableCapacity < quantity) {
+      return res.status(400).json({ success: false, message: "Less troops capacity" });
+    };
+
+    // check for resources
+    if (user?.resources?.coins < totalTroopsPrice) {
+      return res.status(404).json({ success: true, message: "Coins are less" });
+    };
+
+    user.resources.coins -= totalTroopsPrice;
+
+    user?.troops?.troops?.push({ ...troopsLevelInfo[level - 1], quantity });
+    await user?.save();
+    res.status(200).json({ success: true, message: "Troops add successfully", data: user });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech, buyTroops };

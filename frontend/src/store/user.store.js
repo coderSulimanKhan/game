@@ -98,6 +98,25 @@ const upgradeTech = createAsyncThunk("users/tech/upgrade", async (_, { rejectWit
   }
 });
 
+const buyTroops = createAsyncThunk("users/troops/buy", async (data, { rejectWithValue }) => {
+  try {
+    const res = await fetch("/v1/users/troops/buy", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+    const response = await res.json();
+    if (!res.ok) {
+      return rejectWithValue(response);
+    };
+    return response;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -186,8 +205,21 @@ const userSlice = createSlice({
         state.loading = false;
         toast.error(action?.payload?.message);
       })
+      // buy troops
+      .addCase(buyTroops.pending, state => {
+        state.loading = true;
+      })
+      .addCase(buyTroops.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action?.payload?.data;
+        toast.success(action.payload.message);
+      })
+      .addCase(buyTroops.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action?.payload?.message);
+      })
   }
 });
 
-export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech };
+export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech, buyTroops };
 export default userSlice.reducer;

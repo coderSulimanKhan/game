@@ -11,6 +11,7 @@ import TrainInfo from "../components/HomePage/train/TrainInfo"
 import UpgradeTrain from "../components/HomePage/train/UpgradeTrain"
 import TechInfo from "../components/HomePage/tech/TechInfo"
 import UpgradeTech from "../components/HomePage/tech/UpgradeTech"
+import Train from "../components/HomePage/train/Train"
 
 const HomePage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -21,6 +22,7 @@ const HomePage = () => {
   const [isTrainUpgradeOpen, setIsTrainUpgradeOpen] = useState(false);
   const [isTechInfoOpen, setIsTechInfoOpen] = useState(false);
   const [isTechUpgradeOpen, setIsTechUpgradeOpen] = useState(false);
+  const [isTrainOpen, setIsTrainOpen] = useState(false);
 
   const openProfile = () => {
     setIsProfileOpen(true);
@@ -76,11 +78,18 @@ const HomePage = () => {
     setIsTechUpgradeOpen(false);
   };
 
+  const openTrain = () => {
+    setIsTrainOpen(true);
+  };
+  const closeTrain = () => {
+    setIsTrainOpen(false);
+  };
+
   return (
     <div className="relative homePageImage w-screen h-screen">
       <Navbar openProfile={openProfile} openVip={openVip} />
       <SideBar />
-      <Buildings openCastleInfo={openCastleInfo} openCasteleUpdrade={openCasteleUpdrade} openTrainInfo={openTrainInfo} openTrainUpgrade={openTrainUpgrade} openTechInfo={openTechInfo} openTechUpgrade={openTechUpgrade} />
+      <Buildings openCastleInfo={openCastleInfo} openCasteleUpdrade={openCasteleUpdrade} openTrainInfo={openTrainInfo} openTrainUpgrade={openTrainUpgrade} openTechInfo={openTechInfo} openTechUpgrade={openTechUpgrade} openTrain={openTrain} />
       <Footer />
       {isProfileOpen && <Profile closeProfile={closeProfile} />}
       {isVipOpen && <Vip closeVip={closeVip} />}
@@ -90,6 +99,7 @@ const HomePage = () => {
       {isTrainUpgradeOpen && <UpgradeTrain closeTrainUpgrade={closeTrainUpgrade} />}
       {isTechInfoOpen && <TechInfo closeTechInfo={closeTechInfo} />}
       {isTechUpgradeOpen && <UpgradeTech closeTechUpgrade={closeTechUpgrade} />}
+      {isTrainOpen && <Train closeTrain={closeTrain} />}
     </div>
   )
 }

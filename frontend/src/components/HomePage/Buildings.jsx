@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const Buildings = ({ openCastleInfo, openCasteleUpdrade, openTrainInfo, openTrainUpgrade, openTechInfo, openTechUpgrade }) => {
+const Buildings = ({ openCastleInfo, openCasteleUpdrade, openTrainInfo, openTrainUpgrade, openTechInfo, openTechUpgrade, openTrain }) => {
   const { user } = useSelector(state => state.user);
   const [isOpenCastleMoreOptions, setIsOpenCastleMoreOptions] = useState(false);
   const [isOpenTrainMoreOptions, setIsOpenTrainMoreOptions] = useState(false);
@@ -59,7 +59,7 @@ const Buildings = ({ openCastleInfo, openCasteleUpdrade, openTrainInfo, openTrai
             <div className="absolute top-75 font-bold text-orange-100 ts text-md flex flex-col gap-2 gbg borderShadow rounded-lg p-2">
               <div onClick={openTrainInfo} className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Info</div>
               <div onClick={openTrainUpgrade} className="gb px-2 borderShadow rounded-lg hoverEffect">Updgrade</div>
-              <div className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Train</div>
+              <div onClick={openTrain} className="gb px-2 borderShadow rounded-lg hoverEffect text-center">Train</div>
             </div>
           )
         }

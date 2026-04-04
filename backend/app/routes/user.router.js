@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech } from "../controllers/user.controller.js";
+import { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech, buyTroops } from "../controllers/user.controller.js";
 import { protectRoute } from "../middlewares/protectRoute.js";
 
 const router = Router();
@@ -11,5 +11,6 @@ router.get("/rank/:id", getRank);
 router.get("/castle/upgrade", protectRoute, upgradeCastle);
 router.get("/train/upgrade", protectRoute, upgradeTrain);
 router.get("/tech/upgrade", protectRoute, upgradeTech);
+router.post("/troops/buy", protectRoute, buyTroops);
 
 export default router;

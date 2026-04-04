@@ -22,7 +22,19 @@ const userSchema = new Schema({
   isVip: { type: Boolean, default: false },
   vipPoints: { type: Number, min: 0, max: 18000, default: 0 },
   image: { type: String, default: "/pages/HomePage/profile.svg" },
-  achievements: [{ name: { type: String }, image: String }]
+  achievements: [{ name: { type: String }, image: String }],
+  troops: {
+    troops: [{
+      level: { type: Number, min: 1, max: 5 },
+      damage: { type: Number, min: 100 },
+      health: { type: Number, min: 50 },
+      defense: { type: Number, min: 25 },
+      power: { type: Number, min: 100 },
+      price: { type: Number, min: 100 },
+      quantity: { type: Number, min: 1 }
+    }],
+    troopsCapacity: { type: Number, min: 1, default: 10000 }
+  },
 }, { timestamps: true });
 
 export default model("User", userSchema);
