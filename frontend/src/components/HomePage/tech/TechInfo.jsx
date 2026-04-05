@@ -59,7 +59,7 @@ const TechInfo = ({ closeTechInfo }) => {
     ];
   }, []);
   return (
-    <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center">
+    <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center z-30">
       <div className="min-w-90 max-w-90 m-2 h-[60vh] overflow-y-scroll overflow-x-hidden md:m-0 gb borderShadow rounded-lg flex flex-col items-center gap-1 relative styledScrollbar">
         <div className="flex">
           <p className="text-2xl text-orange-200 ts font-bold">Tech Info</p>

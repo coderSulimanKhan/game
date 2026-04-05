@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 const Vip = ({ closeVip }) => {
   const { user } = useSelector(state => state.user);
   return (
-    <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center">
+    <div className="w-full absolute bg-orange-500/20 h-screen inset-0 flex items-center justify-center z-30">
       <div className="min-w-90 max-w-90 m-2 md:m-0 gb borderShadow rounded-lg flex flex-col items-center gap-2">
         <div className="w-full text-center relative">
           <h1 className="text-2xl font-bold text-orange-300 ts">VIP Level</h1>

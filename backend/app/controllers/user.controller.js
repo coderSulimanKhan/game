@@ -356,10 +356,7 @@ const buyTroops = async (req, res) => {
     const user = await User.findOne({ _id: req?.user?.id });
     if (!user) return res.status(404).json({ success: false, message: "User not found" });
 
-    let totalTroops = 0;
-    user?.troops?.troops?.forEach(t => {
-      totalTroops += t.quantity;
-    });
+    let totalTroops = user?.troops?.level1?.quantity + user?.troops?.level2?.quantity + user?.troops?.level3?.quantity + user?.troops?.level4?.quantity + user?.troops?.level5?.quantity;
     const avaliableCapacity = user?.troops?.troopsCapacity - totalTroops;
     // check for troops capacity
     if (avaliableCapacity < quantity) {
@@ -373,12 +370,33 @@ const buyTroops = async (req, res) => {
 
     user.resources.coins -= totalTroopsPrice;
 
-    user?.troops?.troops?.push({ ...troopsLevelInfo[level - 1], quantity });
+    user.troops[`level${level}`].quantity += Number(quantity);
     await user?.save();
     res.status(200).json({ success: true, message: "Troops add successfully", data: user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+const sellTroops = async (req, res) => {
+  try {
+    const { level, quantity } = req?.body;
+    const user = await User.findOne({ _id: req?.user?.id });
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    const currentQuantity = user?.troops[`level${level}`]?.quantity;
+    if (quantity > currentQuantity) {
+      return res.status(400).json({ success: false, message: "Troops not found" });
+    };
+
+    user.troops[`level${level}`].quantity -= quantity;
+    user.resources.coins = Number(user.resources.coins) + Number((user.troops[`level${level}`].price * quantity) / 2);
+    await user?.save();
+    res.status(200).json({ success: true, message: "Troops sold successfully", data: user });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
-export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech, buyTroops };
+export { signup, login, getRank, logout, upgradeCastle, upgradeTrain, upgradeTech, buyTroops, sellTroops };

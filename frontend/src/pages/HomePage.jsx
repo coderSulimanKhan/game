@@ -12,6 +12,7 @@ import UpgradeTrain from "../components/HomePage/train/UpgradeTrain"
 import TechInfo from "../components/HomePage/tech/TechInfo"
 import UpgradeTech from "../components/HomePage/tech/UpgradeTech"
 import Train from "../components/HomePage/train/Train"
+import Troops from "../components/HomePage/Troops"
 
 const HomePage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -23,6 +24,7 @@ const HomePage = () => {
   const [isTechInfoOpen, setIsTechInfoOpen] = useState(false);
   const [isTechUpgradeOpen, setIsTechUpgradeOpen] = useState(false);
   const [isTrainOpen, setIsTrainOpen] = useState(false);
+  const [isTroopsOpen, setIsTroopsOpen] = useState(false);
 
   const openProfile = () => {
     setIsProfileOpen(true);
@@ -85,10 +87,17 @@ const HomePage = () => {
     setIsTrainOpen(false);
   };
 
+  const openTroops = () => {
+    setIsTroopsOpen(true);
+  };
+  const closeTroops = () => {
+    setIsTroopsOpen(false);
+  };
+
   return (
     <div className="relative homePageImage w-screen h-screen">
       <Navbar openProfile={openProfile} openVip={openVip} />
-      <SideBar />
+      <SideBar openTroops={openTroops} />
       <Buildings openCastleInfo={openCastleInfo} openCasteleUpdrade={openCasteleUpdrade} openTrainInfo={openTrainInfo} openTrainUpgrade={openTrainUpgrade} openTechInfo={openTechInfo} openTechUpgrade={openTechUpgrade} openTrain={openTrain} />
       <Footer />
       {isProfileOpen && <Profile closeProfile={closeProfile} />}
@@ -100,6 +109,7 @@ const HomePage = () => {
       {isTechInfoOpen && <TechInfo closeTechInfo={closeTechInfo} />}
       {isTechUpgradeOpen && <UpgradeTech closeTechUpgrade={closeTechUpgrade} />}
       {isTrainOpen && <Train closeTrain={closeTrain} />}
+      {isTroopsOpen && <Troops closeTroops={closeTroops} />}
     </div>
   )
 }

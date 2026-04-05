@@ -44,7 +44,7 @@ const Buildings = ({ openCastleInfo, openCasteleUpdrade, openTrainInfo, openTrai
   //   setIsOpenTechMoreOptions(false);
   // }
 
-  return <div className="h-[73vh] pt-30 lg:pt-50 flex items-center justify-center flex-col relative xl:left-25 xl:top-10">
+  return <div className="h-[73vh] pt-30 mt-35 lg:pt-50 flex items-center justify-center flex-col relative xl:left-25 xl:top-10">
     {/* first section */}
     <div className="flex w-full gap-4 px-2 md:gap-30 items-center justify-center relative mb-115">
       {/* <div className="">

@@ -24,15 +24,51 @@ const userSchema = new Schema({
   image: { type: String, default: "/pages/HomePage/profile.svg" },
   achievements: [{ name: { type: String }, image: String }],
   troops: {
-    troops: [{
-      level: { type: Number, min: 1, max: 5 },
-      damage: { type: Number, min: 100 },
-      health: { type: Number, min: 50 },
-      defense: { type: Number, min: 25 },
-      power: { type: Number, min: 100 },
-      price: { type: Number, min: 100 },
-      quantity: { type: Number, min: 1 }
-    }],
+    level1: {
+      level: { type: Number, min: 1, max: 1, default: 1 },
+      damage: { type: Number, min: 100, default: 100 },
+      health: { type: Number, min: 50, default: 50 },
+      defense: { type: Number, min: 25, default: 25 },
+      power: { type: Number, min: 100, default: 100 },
+      price: { type: Number, min: 100, default: 100 },
+      quantity: { type: Number, min: 0, default: 0 }
+    },
+    level2: {
+      level: { type: Number, min: 2, max: 2, default: 2 },
+      damage: { type: Number, min: 200, default: 200 },
+      health: { type: Number, min: 100, default: 100 },
+      defense: { type: Number, min: 50, default: 50 },
+      power: { type: Number, min: 500, default: 500 },
+      price: { type: Number, min: 500, default: 500 },
+      quantity: { type: Number, min: 0, default: 0 }
+    },
+    level3: {
+      level: { type: Number, min: 3, max: 3, default: 3 },
+      damage: { type: Number, min: 300, default: 300 },
+      health: { type: Number, min: 150, default: 150 },
+      defense: { type: Number, min: 75, default: 75 },
+      power: { type: Number, min: 1000, default: 1000 },
+      price: { type: Number, min: 1000, default: 1000 },
+      quantity: { type: Number, min: 0, default: 0 }
+    },
+    level4: {
+      level: { type: Number, min: 4, max: 4, default: 4 },
+      damage: { type: Number, min: 500, default: 500 },
+      health: { type: Number, min: 250, default: 250 },
+      defense: { type: Number, min: 125, default: 125 },
+      power: { type: Number, min: 5000, default: 5000 },
+      price: { type: Number, min: 5000, default: 5000 },
+      quantity: { type: Number, min: 0, default: 0 }
+    },
+    level5: {
+      level: { type: Number, min: 5, max: 5, default: 5 },
+      damage: { type: Number, min: 1000, default: 1000 },
+      health: { type: Number, min: 500, default: 500 },
+      defense: { type: Number, min: 250, default: 250 },
+      power: { type: Number, min: 10000, default: 10000 },
+      price: { type: Number, min: 10000, default: 10000 },
+      quantity: { type: Number, min: 0, default: 0 }
+    },
     troopsCapacity: { type: Number, min: 1, default: 10000 }
   },
 }, { timestamps: true });
